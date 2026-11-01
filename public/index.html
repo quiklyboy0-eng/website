@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Los Angles Roleplay</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0a0a0b;--p:#131315;--p2:#1a1a1d;--line:#2a2a2f;--t:#ececee;--m:#8f8f98;--r:#d4202c;--g:#d4202c40;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:80px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--t);font:16px/1.6 Barlow,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;letter-spacing:.02em;margin:0;line-height:1}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--r);outline-offset:3px}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:#0a0a0bee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;white-space:nowrap}
+.logo b{color:var(--r);font-weight:400}
+nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav a{padding:8px 11px;font-size:14px;font-weight:500;color:var(--m);border-bottom:2px solid transparent;white-space:nowrap}
+nav a:hover{color:var(--t)}
+nav a.on{color:var(--t);border-color:var(--r)}
+.pg{display:none;animation:in .35s ease}
+.pg.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.pg{animation:none}}
+.btn{display:inline-block;padding:12px 22px;border:1px solid var(--line);border-radius:4px;font-weight:600;font-size:15px;background:transparent;color:var(--t);cursor:pointer;font-family:inherit}
+.btn:hover{border-color:var(--r)}
+.btn.red{background:var(--r);border-color:var(--r);box-shadow:0 0 24px var(--g)}
+.btn.red:hover{filter:brightness(1.15)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+/* hero */
+.hero{position:relative;min-height:78vh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(90% 70% at 70% 100%,#2a0b0e 0,#0a0a0b 65%)}
+.hero svg{position:absolute;left:0;bottom:0;width:100%;height:42%}
+.hero .w{position:relative;padding-top:60px;padding-bottom:110px}
+.hero h1{font-size:clamp(64px,15vw,150px);line-height:.88}
+.hero h1 span{color:var(--r);text-shadow:0 0 40px var(--g)}
+.hero p{max-width:50ch;color:#c7c7cd;font-size:18px;margin:22px 0 28px}
+.hr{height:3px;width:70px;background:var(--r);margin-bottom:18px;box-shadow:0 0 14px var(--r)}
+section.s{padding:64px 0}
+h2{font-size:clamp(36px,6vw,58px)}
+.sub{color:var(--m);max-width:56ch;margin:10px 0 30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:var(--p);border:1px solid var(--line);border-radius:6px;padding:20px;transition:border-color .2s}
+.card:hover{border-color:#5a1a20}
+.card h3{font-size:26px;margin-bottom:8px}
+.card p{margin:0 0 12px;color:var(--m);font-size:15px}
+.big{font-family:'Bebas Neue',sans-serif;font-size:46px;color:var(--t);line-height:1}
+.lab{font-size:13px;color:var(--m)}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:3px;background:#2a1215;color:#ff6b75;margin-bottom:10px}
+.note{border-left:3px solid var(--r);background:var(--p);padding:12px 16px;color:#c7c7cd;font-size:14px;margin:0 0 24px;border-radius:0 4px 4px 0}
+.band{background:var(--p);border-block:1px solid var(--line)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media(max-width:760px){.two{grid-template-columns:1fr}.hero{min-height:70vh}}
+.ph{padding:50px 0 10px}
+/* form */
+.bar{height:6px;background:var(--p2);border-radius:3px;overflow:hidden;margin:6px 0 24px}
+.bar i{display:block;height:100%;background:var(--r);box-shadow:0 0 12px var(--r);transition:width .35s}
+.q{margin-bottom:20px}
+.q label{display:block;font-weight:600;margin-bottom:6px}
+.q label small{color:var(--r)}
+input,textarea{width:100%;background:var(--p2);color:var(--t);border:1px solid var(--line);border-radius:4px;padding:11px 12px;font:inherit}
+textarea{min-height:120px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--r)}
+.err{color:#ff6b75;font-size:13px;min-height:18px;margin-top:3px}
+.rv{border-bottom:1px solid var(--line);padding:10px 0}
+.rv b{display:block;font-size:14px;color:var(--m);font-weight:500}
+.rv span{white-space:pre-wrap;word-break:break-word}
+.stat{font-size:14px;color:var(--m);min-height:20px;margin-top:10px}
+.ap{display:flex;flex-direction:column;gap:10px}
+.pill{font-size:12px;font-weight:600;padding:2px 9px;border-radius:3px;background:#2a2a2f}
+.pill.ok{background:#12351f;color:#5be08f}.pill.no{background:#3a1217;color:#ff6b75}
+footer{border-top:1px solid var(--line);padding:30px 0 50px;color:var(--m);font-size:14px}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.lights{position:absolute;top:0;left:0;right:0;height:5px;display:flex;z-index:2}
+.lights::before,.lights::after{content:"";flex:1;animation:fl 1s infinite}
+.lights::before{background:#e11d2e;box-shadow:0 0 70px 16px #e11d2e88}
+.lights::after{background:#1d6bff;box-shadow:0 0 70px 16px #1d6bff88;animation-delay:.5s}
+@keyframes fl{0%,100%{opacity:1}50%{opacity:.12}}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(40% 55% at 12% 0,#e11d2e55,transparent),radial-gradient(40% 55% at 88% 0,#1d6bff44,transparent);animation:fl 2s infinite}
+.hero h1{text-shadow:3px 0 #1d6bff88,-3px 0 #e11d2e88;animation:gl 5s infinite}
+@keyframes gl{0%,91%,100%{transform:none}93%{transform:translate(-5px,1px) skewX(-5deg)}96%{transform:translate(5px,-1px) skewX(4deg)}}
+.mq{position:absolute;left:0;right:0;bottom:0;z-index:3;background:var(--r);overflow:hidden;white-space:nowrap;transform:rotate(-1.2deg) scale(1.06);transform-origin:left bottom;padding:6px 0;font:22px 'Bebas Neue',sans-serif;letter-spacing:.12em;box-shadow:0 0 40px var(--g)}
+.mq div{display:inline-block;animation:mq 24s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.card{position:relative;overflow:hidden;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px))}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(240px circle at var(--x,50%) var(--y,0),#d4202c40,transparent 70%);opacity:0;transition:opacity .2s;pointer-events:none}
+.card:hover::before{opacity:1}
+.card[data-c]::after{content:attr(data-c);position:absolute;right:-4px;bottom:-16px;font:96px 'Bebas Neue',sans-serif;color:#ffffff0a;pointer-events:none}
+.btn{transform:skewX(-8deg);text-transform:uppercase;letter-spacing:.07em;font-size:14px}
+.btn:hover{transform:skewX(-8deg) translateY(-2px)}
+h2::before{content:"//";color:var(--r);margin-right:.18em}
+.s.band{clip-path:polygon(0 26px,100% 0,100% calc(100% - 26px),0 100%);padding:100px 0}
+.nav nav{flex:1;min-width:0;justify-content:center}
+.dj{padding:8px 14px}
+@media(max-width:560px){.dj{display:none}}
+@media(max-width:700px){.nav{height:auto;flex-wrap:wrap;padding-top:8px}.nav nav{order:3;width:100%;flex:none;justify-content:space-between}.nav nav a{padding:8px 7px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+<header><div class="w nav">
+  <a class="logo" href="#home">LOS ANGLES <b>RP</b></a>
+  <nav id="nav"></nav><a class="btn red dj" href="https://discord.gg/Udns79wXpM" target="_blank" rel="noopener">Discord</a>
+</div></header>
+
+<main>
+<!-- HOME -->
+<div class="pg" id="p-home">
+  <div class="hero"><div class="lights"></div><div class="mq"><div>CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ </div></div>
+    <svg viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path fill="#060607" d="M0 200V120h50V80h40v50h30V60h50v90h40V100h30V40h40v110h50V90h40V70h50v130h40V110h60V50h40v100h50V85h40v60h40V65h50v135h40V100h60V75h40v125z"/><rect y="196" width="1200" height="4" fill="#d4202c"/></svg>
+    <div class="w">
+      <div class="hr"></div>
+      <h1>LOS ANGLES<br><span>ROLEPLAY</span></h1>
+      <p>A Roblox roleplay community built around serious scenes, fair staff and real stories on the streets of the city.</p>
+      <div class="row"><a class="btn red" href="https://discord.gg/Udns79wXpM" target="_blank" rel="noopener">Join our Discord</a><a class="btn" href="https://www.roblox.com/share/g/870226872" target="_blank" rel="noopener">Roblox group</a></div>
+    </div>
+  </div>
+  <section class="s"><div class="w">
+    <h2>Community stats</h2>
+    <p class="sub">Live numbers from Roblox and Discord, refreshed every few minutes. A dash means the number is not available right now.</p>
+    <div class="grid">
+      <div class="card"><div class="big" id="sRoblox">—</div><div class="lab">Roblox group members</div></div>
+      <div class="card"><div class="big" id="sDiscord">—</div><div class="lab">Discord members</div></div>
+      <div class="card"><div class="big" id="sOnline">—</div><div class="lab">Online on Discord</div></div>
+    </div>
+  </div></section>
+  <section class="s band"><div class="w">
+    <h2>Featured departments</h2><p class="sub">Choose a role and build your character around it.</p>
+    <div class="grid" id="featDept"></div>
+    <p style="margin-top:20px"><a class="btn" href="#departments">All departments</a></p>
+  </div></section>
+  <section class="s"><div class="w">
+    <h2>Latest announcements</h2><p class="sub">Latest posts from our Discord announcements channel.</p>
+    <div class="grid" id="homeNews"></div>
+  </div></section>
+</div>
+
+<!-- ABOUT -->
+<div class="pg" id="p-about">
+  <div class="w ph"><div class="hr"></div><h2>About us</h2>
+  <p class="sub">Los Angles Roleplay is a Roblox community for people who want structured, respectful and immersive roleplay.</p></div>
+  <section class="s"><div class="w two">
+    <div><h3 style="font-size:34px;margin-bottom:10px">Our mission</h3><p style="color:#c7c7cd">Give every player a place where their story matters, the rules are clear and staff treat everyone the same way. <i style="color:var(--m)">(Sample text. Replace with your own.)</i></p></div>
+    <div class="grid" style="grid-template-columns:1fr">
+      <div class="card"><h3>Fair enforcement</h3><p>Evidence first, no favourites, every decision explained.</p></div>
+      <div class="card"><h3>Real roleplay</h3><p>Realistic scenes over chaos. FRP, VDM and RDM are not tolerated.</p></div>
+      <div class="card"><h3>Open staff team</h3><p>Anyone who meets the standard can apply to join.</p></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- DEPARTMENTS -->
+<div class="pg" id="p-departments">
+  <div class="w ph"><div class="hr"></div><h2>Departments</h2>
+  <p class="sub">Four departments. Each one has its own team and training.</p></div>
+  <section class="s"><div class="w"><div class="grid" id="deptList"></div></div></section>
+</div>
+
+<!-- APPLICATIONS -->
+<div class="pg" id="p-applications">
+  <div class="w ph" style="max-width:760px"><div class="hr"></div><h2>Staff application</h2>
+  <div class="note">Only you and staff reviewers can see your application.</div>
+  <div class="lab" id="stepLab"></div><div class="bar"><i id="bar"></i></div>
+  <div id="form"></div></div>
+</div>
+
+<!-- NEWS -->
+<div class="pg" id="p-news">
+  <div class="w ph"><div class="hr"></div><h2>News and announcements</h2>
+  <p class="sub">Posted from our Discord announcements channel.</p></div>
+  <section class="s"><div class="w"><div class="grid" id="newsList"></div></div></section>
+</div>
+
+<!-- STAFF -->
+<div class="pg" id="p-staff">
+  <div class="w ph"><div class="hr"></div><h2>Staff dashboard</h2>
+  <div id="staffGate" class="card" style="max-width:520px;margin-top:20px">
+    <h3>Staff only</h3>
+    <p id="gateMsg">Checking your login...</p>
+  </div>
+  <div id="staffDash" style="display:none">
+    <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:20px"><span class="lab" id="whoami"></span><button class="btn" id="logoutBtn">Log out</button></div>
+    <h3 style="font-size:30px;margin-bottom:12px">Guides</h3>
+    <div class="grid" id="guides" style="margin-bottom:34px"></div>
+    <div class="two">
+      <div><h3 style="font-size:30px;margin-bottom:12px">Applications</h3><div class="ap" id="apps"></div></div>
+      <div>
+        <div id="detail"></div>
+        <h3 style="font-size:30px;margin-bottom:12px">Publish announcement</h3>
+        <div class="card"><div class="q"><input id="annT" maxlength="200" placeholder="Title"></div><div class="q"><textarea id="annB" maxlength="3000" placeholder="Message"></textarea></div>
+        <button class="btn red" id="annGo">Publish to Discord</button><div class="stat" id="annS"></div></div>
+      </div>
+    </div>
+  </div></div>
+</div>
+</main>
+<footer><div class="w">© Los Angles Roleplay. Not affiliated with Roblox Corporation. <a href="#staff" style="color:var(--r);font-weight:600">Staff portal</a></div></footer>
+
+<script>
+var PAGES=[["home","Home"],["about","About"],["departments","Departments"],["applications","Apply"],["news","News"],["staff","Staff"]];
+var DEPTS=[["California Highway Patrol (CHP)","Work the freeways: traffic enforcement, collisions and pursuits.","Position open",1],["Los Angeles Police Department (LAPD)","Patrol the city, respond to 911 calls and keep the peace.","Position open",1],["Los Angeles Fire Department (LAFD)","Fire response, medical calls and rescues across the city.","Position open",1],["Los Angeles County Sheriff’s Department (LASD)","Cover county calls, unincorporated areas and transport.","Position open",1]];
+var SEC=[["Personal information",[["Roblox username"],["Discord username"],["How old are you?"],["Roblox User ID"],["What timezone are you in?"],["How active can you be each week?"]]],
+["Roleplay knowledge",[["What does FRP stand for?"],["What does VDM stand for?"],["What does RDM stand for?"],["What does NITRP stand for?"],["What does AA/MA stand for?"],["Explain what Fail Roleplay (FRP) means in your own words.",1],["Why is it important to follow roleplay rules?",1]]],
+["Scenario questions",[["Little Timmy shoots another player for absolutely no reason. How would you handle this situation? Explain what evidence you would look for and what punishment you believe is appropriate.",1],["A player is repeatedly breaking roleplay rules but claims they did nothing wrong. How would you deal with them?",1],["Two players report each other for RDM. How would you investigate the situation fairly?",1],["You witness another staff member abusing their permissions. What would you do?",1],["A player starts arguing with you after you issue a punishment. How would you respond?",1],["A friend of yours breaks the rules. Would you punish them? Explain your answer.",1],["A player is accused of exploiting but you have no evidence. What would you do?",1]]],
+["Final questions",[["Why do you want to become a staff member at Los Angles Roleplay?",1],["What makes you suitable for this position?",1],["What would you do to improve our community?",1],["Is there anything else you would like us to know?",1,1]]]];
+var $=function(i){return document.getElementById(i)};
+function mk(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function card(a,b,c,d){var e=mk("div","card");if(d)e.appendChild(mk("span","tag",d));e.appendChild(mk("h3",0,a));e.appendChild(mk("p",0,b));if(c)e.appendChild(c);return e}
+/* nav + router */
+PAGES.forEach(function(p){var a=mk("a",0,p[1]);a.href="#"+p[0];a.dataset.p=p[0];$("nav").appendChild(a)});
+function route(){var h=(location.hash||"#home").slice(1);if(!$("p-"+h))h="home";
+ document.querySelectorAll(".pg").forEach(function(e){e.classList.toggle("on",e.id==="p-"+h)});
+ document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.dataset.p===h)});window.scrollTo(0,0)}
+window.addEventListener("hashchange",route);
+/* content */
+DEPTS.forEach(function(d,i){
+ var l=mk("a","btn","Apply");l.href="#applications";
+ var c=card(d[0],d[1]),cd=(d[0].match(/\(([^)]+)\)/)||[0,""])[1];c.dataset.c=cd;c.appendChild(mk("div","lab","Leadership: "+d[2]));
+ var m=mk("div");m.style.marginTop="14px";if(d[3])m.appendChild(l);else m.appendChild(mk("span","lab","Applications closed"));c.appendChild(m);
+ $("deptList").appendChild(c);var f=card(d[0],d[1]);f.dataset.c=cd;$("featDept").appendChild(f);});
+/* ---------- backend ---------- */
+var sb=null,token=null,me=null,step=0,ans={};
+function api(p,o){o=o||{};var hd={"Content-Type":"application/json"};if(token)hd.Authorization="Bearer "+token;
+ return fetch("/api"+p,{method:o.method||"GET",headers:hd,body:o.body?JSON.stringify(o.body):undefined}).then(function(r){
+  return r.json().catch(function(){return{}}).then(function(d){if(!r.ok)throw new Error(d.error||"Request failed");return d})})}
+function login(){if(!sb)return;try{sessionStorage.setItem("after",location.hash)}catch(e){}
+ sb.auth.signInWithOAuth({provider:"discord",options:{redirectTo:location.origin+"/",scopes:"identify"}})}
+function logout(){if(sb)sb.auth.signOut()}
+function loginBtn(){var b=mk("button","btn red","Log in with Discord");b.onclick=login;return b}
+
+/* application form */
+function renderForm(){var f=$("form");f.textContent="";var tot=SEC.length+1;
+ $("bar").style.width=Math.round((step+1)/(tot+1)*100)+"%";
+ if(step===SEC.length+1){$("stepLab").textContent="Submitted";f.appendChild(card("Application received","Your application was saved and staff will review it. You will hear back on Discord."));return}
+ if(!me){$("stepLab").textContent="";var c=card("Log in to apply","Sign in with Discord so your application is linked to your account.");c.appendChild(loginBtn());f.appendChild(c);return}
+ if(me.application&&me.application.status!=="denied"){$("stepLab").textContent="";f.appendChild(card("Application "+me.application.status,me.application.status==="pending"?"Staff are reviewing your application. You can only have one open at a time.":"Your application was approved. Welcome to the team."));return}
+ if(step===SEC.length){$("stepLab").textContent="Review your answers";
+  SEC.forEach(function(s,si){var t=mk("h3",0,s[0]);t.style.margin="18px 0 6px";f.appendChild(t);
+   s[1].forEach(function(q,qi){var r=mk("div","rv");r.appendChild(mk("b",0,q[0]));r.appendChild(mk("span",0,ans[si+"-"+qi]||"(blank)"));f.appendChild(r)})});
+  nav2(f,"Submit application");return}
+ var s=SEC[step];$("stepLab").textContent="Step "+(step+1)+" of "+tot+": "+s[0];
+ s[1].forEach(function(q,qi){var k=step+"-"+qi,w=mk("div","q"),n=0;for(var a=0;a<step;a++)n+=SEC[a][1].length;
+  var lb=mk("label",0,(n+qi+1)+". "+q[0]+" ");if(!q[2])lb.appendChild(mk("small",0,"*"));w.appendChild(lb);
+  var i=q[1]?mk("textarea"):mk("input");i.value=ans[k]||"";i.maxLength=q[1]?3000:200;
+  i.addEventListener("input",function(){ans[k]=i.value});w.appendChild(i);var e=mk("div","err");e.id="e"+k;w.appendChild(e);f.appendChild(w)});
+ nav2(f,"Next")}
+function nav2(f,nx){var msg=mk("div","err");f.appendChild(msg);var r=mk("div","row");
+ if(step>0){var b=mk("button","btn","Previous");b.onclick=function(){step--;renderForm();window.scrollTo(0,0)};r.appendChild(b)}
+ var n=mk("button","btn red",nx);n.onclick=function(){
+  if(step===SEC.length){n.disabled=true;msg.textContent="Submitting...";
+   api("/apply",{method:"POST",body:{answers:ans}}).then(function(){me.application={status:"pending"};step++;renderForm();window.scrollTo(0,0)}).catch(function(e){n.disabled=false;msg.textContent=e.message});return}
+  var bad=0;SEC[step][1].forEach(function(q,qi){var k=step+"-"+qi,v=(ans[k]||"").trim(),e=$("e"+k);
+   if(!q[2]&&!v){e.textContent="This question is required.";bad++}else e.textContent=""});
+  if(bad){var x=document.querySelector(".err:not(:empty)");if(x)x.scrollIntoView({block:"center"});return}
+  step++;renderForm();window.scrollTo(0,0)};r.appendChild(n);f.appendChild(r)}
+
+/* staff dashboard */
+function staffErr(e){var s=$("annS");if(s)s.textContent=e.message}
+function renderStaff(){var gate=$("staffGate"),dash=$("staffDash");
+ if(me&&me.isStaff){gate.style.display="none";dash.style.display="block";$("whoami").textContent="Logged in as "+me.username;loadApps();loadGuides();return}
+ dash.style.display="none";gate.style.display="block";gate.querySelectorAll("button").forEach(function(b){b.remove()});
+ $("gateMsg").textContent=!me?"Log in with Discord. Access is checked on our server against your roles in the Discord server.":(me.botOnline===false?"We could not verify your roles because the bot is offline. Try again later.":"Your Discord account does not have staff access.");
+ if(!me)gate.appendChild(loginBtn());else{var b=mk("button","btn","Log out");b.onclick=logout;gate.appendChild(b)}}
+function loadGuides(){api("/admin/guides").then(function(d){var g=$("guides");g.textContent="";
+ if(!d.guides.length){g.appendChild(card("No guides yet","Guide links have not been added to the server settings."));return}
+ d.guides.forEach(function(x){var c=card(x.name,"Confidential. Staff only.",null,"Guide");if(/^https:\/\//.test(x.url)){var a=mk("a","btn","Open guide");a.href=x.url;a.target="_blank";a.rel="noopener noreferrer";c.appendChild(a)}g.appendChild(c)})}).catch(staffErr)}
+function loadApps(){api("/admin/applications").then(function(d){var a=$("apps");a.textContent="";
+ if(!d.applications.length){a.appendChild(card("No applications yet","New applications will appear here."));return}
+ d.applications.forEach(function(x){var c=mk("div","card");var t=mk("h3",0,x.discord_username);t.style.fontSize="22px";c.appendChild(t);
+  c.appendChild(mk("span","pill "+(x.status==="approved"?"ok":x.status==="denied"?"no":""),x.status));
+  var l=mk("div","lab",new Date(x.created_at).toLocaleString());l.style.marginTop="6px";c.appendChild(l);
+  var b=mk("button","btn","Open");b.style.marginTop="10px";b.onclick=function(){openApp(x.id)};c.appendChild(b);a.appendChild(c)})}).catch(staffErr)}
+function openApp(id){api("/admin/applications/"+id).then(function(d){var a=d.application,box=$("detail");box.textContent="";
+ var c=mk("div","card");c.style.marginBottom="24px";c.appendChild(mk("h3",0,a.discord_username));
+ c.appendChild(mk("div","lab","Status: "+a.status+"   Discord ID: "+a.discord_id));
+ SEC.forEach(function(s,si){var t=mk("h3",0,s[0]);t.style.cssText="font-size:22px;margin:16px 0 4px";c.appendChild(t);
+  s[1].forEach(function(q,qi){var r=mk("div","rv");r.appendChild(mk("b",0,q[0]));r.appendChild(mk("span",0,a.answers[si+"-"+qi]||"(blank)"));c.appendChild(r)})});
+ var nt=mk("h3",0,"Internal staff notes");nt.style.cssText="font-size:22px;margin:18px 0 4px";c.appendChild(nt);
+ d.notes.forEach(function(n){var r=mk("div","rv");r.appendChild(mk("b",0,n.author_name+"  "+new Date(n.created_at).toLocaleString()));r.appendChild(mk("span",0,n.note));c.appendChild(r)});
+ var ni=mk("textarea");ni.placeholder="Add a private note";ni.style.cssText="margin:10px 0;min-height:70px";ni.maxLength=2000;c.appendChild(ni);
+ var out=mk("div","stat");var nb=mk("button","btn","Add note");nb.onclick=function(){if(!ni.value.trim())return;
+  api("/admin/applications/"+id+"/notes",{method:"POST",body:{note:ni.value}}).then(function(){openApp(id)}).catch(function(e){out.textContent=e.message})};c.appendChild(nb);
+ if(a.status==="pending"){var rs=mk("textarea");rs.placeholder="Reason (sent to the applicant)";rs.style.cssText="margin:14px 0 10px;min-height:70px";rs.maxLength=1000;c.appendChild(rs);
+  var row=mk("div","row");["approved","denied"].forEach(function(dc){var b=mk("button","btn"+(dc==="approved"?" red":""),dc==="approved"?"Approve":"Deny");
+   b.onclick=function(){row.querySelectorAll("button").forEach(function(x){x.disabled=true});decide(id,dc,rs.value,out)};row.appendChild(b)});c.appendChild(row)}
+ c.appendChild(out);box.appendChild(c);box.scrollIntoView()}).catch(staffErr)}
+function decide(id,dec,reason,out){out.textContent="Working...";
+ api("/admin/applications/"+id+"/decision",{method:"POST",body:{decision:dec,reason:reason}}).then(function(r){var m="Saved as "+dec+".";
+  if(r.botError)m+=" The bot could not be reached, so no Discord message or role was sent: "+r.botError;
+  else if(r.bot){if(dec==="approved")m+=r.bot.roleAssigned?" Role assigned.":" Role NOT assigned"+(r.bot.roleError?": "+r.bot.roleError:".");m+=r.bot.dmSent?" DM sent.":" DM could not be sent (their DMs may be closed)."}
+  out.textContent=m;loadApps()}).catch(function(e){out.textContent=e.message})}
+$("annGo").onclick=function(){var t=$("annT").value.trim(),m=$("annB").value.trim(),s=$("annS");if(!t||!m){s.textContent="Add a title and a message first.";return}
+ s.textContent="Publishing...";api("/admin/announcements",{method:"POST",body:{title:t,message:m}}).then(function(){s.textContent="Posted to Discord.";$("annT").value="";$("annB").value="";loadNews()}).catch(function(e){s.textContent=e.message})};
+$("logoutBtn").onclick=logout;
+
+/* public data */
+function setStat(id,v){$(id).textContent=typeof v==="number"?v.toLocaleString():"—"}
+function loadStats(){api("/stats").then(function(s){setStat("sRoblox",s.robloxMembers);setStat("sDiscord",s.discordMembers);setStat("sOnline",s.discordOnline)}).catch(function(){})}
+function loadNews(){api("/news").then(function(d){["newsList","homeNews"].forEach(function(id){var g=$(id);g.textContent="";var items=id==="homeNews"?d.announcements.slice(0,3):d.announcements;
+ if(!items.length){g.appendChild(card("No announcements to show",d.available===false?"Announcements are temporarily unavailable.":"Check our Discord for the latest."));return}
+ items.forEach(function(n){g.appendChild(card(n.title||"Announcement",n.content||"",null,new Date(n.createdAt).toLocaleDateString()))})})}).catch(function(){})}
+
+/* login state */
+function render(){renderForm();renderStaff()}
+function loadMe(){if(!token){me=null;render();return}api("/me").then(function(m){me=m;render()}).catch(function(){me=null;render()})}
+fetch("/api/config").then(function(r){return r.json()}).then(function(c){
+ sb=supabase.createClient(c.supabaseUrl,c.supabaseAnonKey,{auth:{flowType:"pkce"}});
+ sb.auth.onAuthStateChange(function(ev,s){token=s?s.access_token:null;loadMe()})}).catch(render);
+try{var after=sessionStorage.getItem("after");if(after){sessionStorage.removeItem("after");location.hash=after}}catch(e){}
+render();loadStats();loadNews();route();
+</script>
+</body>
+</html>
