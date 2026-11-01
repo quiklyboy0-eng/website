@@ -100,6 +100,26 @@ h2::before{content:"//";color:var(--r);margin-right:.18em}
 @media(max-width:560px){.dj{display:none}}
 @media(max-width:700px){.nav{height:auto;flex-wrap:wrap;padding-top:8px}.nav nav{order:3;width:100%;flex:none;justify-content:space-between}.nav nav a{padding:8px 7px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+.prof{display:flex;gap:16px;align-items:center;background:var(--p);border:1px solid var(--line);border-radius:8px;padding:18px;margin-bottom:14px;flex-wrap:wrap}
+.av{width:68px;height:68px;border-radius:50%;background:#2a1215;border:2px solid var(--r);display:grid;place-items:center;font:30px 'Bebas Neue',sans-serif;overflow:hidden;flex:none;box-shadow:0 0 20px var(--g)}
+.av img{width:100%;height:100%;object-fit:cover}
+.pi{flex:1;min-width:220px}.pn{font:36px 'Bebas Neue',sans-serif;line-height:1}
+.chips2{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.rc{font-size:12px;padding:3px 10px;border-radius:99px;border:1px solid var(--line);background:var(--p2);display:inline-flex;align-items:center;gap:6px}
+.rc i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:36px}
+.tile{background:var(--p);border:1px solid var(--line);border-radius:8px;padding:16px}
+.tile.bad{border-color:#6a1c24;box-shadow:0 0 22px var(--g)}
+.tv{font:42px 'Bebas Neue',sans-serif;line-height:1.1;margin:4px 0}
+.dots{display:flex;gap:6px}.dots i{width:26px;height:6px;border-radius:3px;background:var(--p2)}.dots i.on{background:var(--r);box-shadow:0 0 8px var(--r)}
+.meter{height:6px;background:var(--p2);border-radius:3px;overflow:hidden;margin:10px 0 6px}.meter i{display:block;height:100%;width:0;background:var(--r);box-shadow:0 0 8px var(--r);transition:width .6s}
+.sh{font-size:30px;margin:0 0 12px}
+.hero h1 span.w1{color:var(--t);text-shadow:3px 0 #1d6bff88,-3px 0 #e11d2e88}
+#editFab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:none}
+#editBar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:45;background:#0a0a0bf5;border-top:1px solid var(--r);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}
+.editing [data-k]{outline:1px dashed var(--r);outline-offset:3px;cursor:text}
+.editonly{display:none;margin-top:8px}.editing .editonly{display:inline-block}
+body.editing{padding-bottom:90px}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 </head>
@@ -112,94 +132,106 @@ h2::before{content:"//";color:var(--r);margin-right:.18em}
 <main>
 <!-- HOME -->
 <div class="pg" id="p-home">
-  <div class="hero"><div class="lights"></div><div class="mq"><div>CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ </div></div>
+  <div class="hero"><div class="lights"></div><div class="mq"><div data-k="home.1">CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ CHP ✦ LAPD ✦ LAFD ✦ LASD ✦ NOW HIRING ✦ JOIN THE DISCORD ✦ </div></div>
     <svg viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path fill="#060607" d="M0 200V120h50V80h40v50h30V60h50v90h40V100h30V40h40v110h50V90h40V70h50v130h40V110h60V50h40v100h50V85h40v60h40V65h50v135h40V100h60V75h40v125z"/><rect y="196" width="1200" height="4" fill="#d4202c"/></svg>
     <div class="w">
       <div class="hr"></div>
-      <h1>LOS ANGLES<br><span>ROLEPLAY</span></h1>
-      <p>A Roblox roleplay community built around serious scenes, fair staff and real stories on the streets of the city.</p>
-      <div class="row"><a class="btn red" href="https://discord.gg/Udns79wXpM" target="_blank" rel="noopener">Join our Discord</a><a class="btn" href="https://www.roblox.com/share/g/870226872" target="_blank" rel="noopener">Roblox group</a></div>
+      <h1><span class="w1" data-k="home.2">LOS ANGLES</span><br><span data-k="home.3">ROLEPLAY</span></h1>
+      <p data-k="home.4">A Roblox roleplay community built around serious scenes, fair staff and real stories on the streets of the city.</p>
+      <div class="row"><a class="btn red" href="https://discord.gg/Udns79wXpM" target="_blank" rel="noopener" data-k="home.5">Join our Discord</a><a class="btn" href="https://www.roblox.com/share/g/870226872" target="_blank" rel="noopener" data-k="home.6">Roblox group</a></div>
     </div>
   </div>
   <section class="s"><div class="w">
-    <h2>Community stats</h2>
-    <p class="sub">Live numbers from Roblox and Discord, refreshed every few minutes. A dash means the number is not available right now.</p>
+    <h2 data-k="home.7">Community stats</h2>
+    <p class="sub" data-k="home.8">Live numbers from Roblox and Discord, refreshed every few minutes. A dash means the number is not available right now.</p>
     <div class="grid">
-      <div class="card"><div class="big" id="sRoblox">—</div><div class="lab">Roblox group members</div></div>
-      <div class="card"><div class="big" id="sDiscord">—</div><div class="lab">Discord members</div></div>
-      <div class="card"><div class="big" id="sOnline">—</div><div class="lab">Online on Discord</div></div>
+      <div class="card"><div class="big" id="sRoblox">—</div><div class="lab" data-k="home.9">Roblox group members</div></div>
+      <div class="card"><div class="big" id="sDiscord">—</div><div class="lab" data-k="home.10">Discord members</div></div>
+      <div class="card"><div class="big" id="sOnline">—</div><div class="lab" data-k="home.11">Online on Discord</div></div>
     </div>
   </div></section>
   <section class="s band"><div class="w">
-    <h2>Featured departments</h2><p class="sub">Choose a role and build your character around it.</p>
+    <h2 data-k="home.12">Featured departments</h2><p class="sub" data-k="home.13">Choose a role and build your character around it.</p>
     <div class="grid" id="featDept"></div>
-    <p style="margin-top:20px"><a class="btn" href="#departments">All departments</a></p>
+    <p style="margin-top:20px"><a class="btn" href="#departments" data-k="home.14">All departments</a></p>
   </div></section>
   <section class="s"><div class="w">
-    <h2>Latest announcements</h2><p class="sub">Latest posts from our Discord announcements channel.</p>
+    <h2 data-k="home.15">Latest announcements</h2><p class="sub" data-k="home.16">Latest posts from our Discord announcements channel.</p>
     <div class="grid" id="homeNews"></div>
   </div></section>
 </div>
 
 <!-- ABOUT -->
 <div class="pg" id="p-about">
-  <div class="w ph"><div class="hr"></div><h2>About us</h2>
-  <p class="sub">Los Angles Roleplay is a Roblox community for people who want structured, respectful and immersive roleplay.</p></div>
+  <div class="w ph"><div class="hr"></div><h2 data-k="about.1">About us</h2>
+  <p class="sub" data-k="about.2">Los Angles Roleplay is a Roblox community for people who want structured, respectful and immersive roleplay.</p></div>
   <section class="s"><div class="w two">
-    <div><h3 style="font-size:34px;margin-bottom:10px">Our mission</h3><p style="color:#c7c7cd">Give every player a place where their story matters, the rules are clear and staff treat everyone the same way. <i style="color:var(--m)">(Sample text. Replace with your own.)</i></p></div>
+    <div><h3 style="font-size:34px;margin-bottom:10px" data-k="about.3">Our mission</h3><p style="color:#c7c7cd" data-k="about.4">Give every player a place where their story matters, the rules are clear and staff treat everyone the same way.</p></div>
     <div class="grid" style="grid-template-columns:1fr">
-      <div class="card"><h3>Fair enforcement</h3><p>Evidence first, no favourites, every decision explained.</p></div>
-      <div class="card"><h3>Real roleplay</h3><p>Realistic scenes over chaos. FRP, VDM and RDM are not tolerated.</p></div>
-      <div class="card"><h3>Open staff team</h3><p>Anyone who meets the standard can apply to join.</p></div>
+      <div class="card"><h3 data-k="about.5">Fair enforcement</h3><p data-k="about.6">Evidence first, no favourites, every decision explained.</p></div>
+      <div class="card"><h3 data-k="about.7">Real roleplay</h3><p data-k="about.8">Realistic scenes over chaos. FRP, VDM and RDM are not tolerated.</p></div>
+      <div class="card"><h3 data-k="about.9">Open staff team</h3><p data-k="about.10">Anyone who meets the standard can apply to join.</p></div>
     </div>
   </div></section>
 </div>
 
 <!-- DEPARTMENTS -->
 <div class="pg" id="p-departments">
-  <div class="w ph"><div class="hr"></div><h2>Departments</h2>
-  <p class="sub">Four departments. Each one has its own team and training.</p></div>
+  <div class="w ph"><div class="hr"></div><h2 data-k="departments.1">Departments</h2>
+  <p class="sub" data-k="departments.2">Four departments. Each one has its own team and training.</p></div>
   <section class="s"><div class="w"><div class="grid" id="deptList"></div></div></section>
 </div>
 
 <!-- APPLICATIONS -->
 <div class="pg" id="p-applications">
-  <div class="w ph" style="max-width:760px"><div class="hr"></div><h2>Staff application</h2>
-  <div class="note">Only you and staff reviewers can see your application.</div>
+  <div class="w ph" style="max-width:760px"><div class="hr"></div><h2 data-k="applications.1">Staff application</h2>
+  <div class="note" data-k="applications.2">Only you and staff reviewers can see your application.</div>
   <div class="lab" id="stepLab"></div><div class="bar"><i id="bar"></i></div>
   <div id="form"></div></div>
 </div>
 
 <!-- NEWS -->
 <div class="pg" id="p-news">
-  <div class="w ph"><div class="hr"></div><h2>News and announcements</h2>
-  <p class="sub">Posted from our Discord announcements channel.</p></div>
+  <div class="w ph"><div class="hr"></div><h2 data-k="news.1">News and announcements</h2>
+  <p class="sub" data-k="news.2">Posted from our Discord announcements channel.</p></div>
   <section class="s"><div class="w"><div class="grid" id="newsList"></div></div></section>
 </div>
 
 <!-- STAFF -->
 <div class="pg" id="p-staff">
-  <div class="w ph"><div class="hr"></div><h2>Staff dashboard</h2>
+  <div class="w ph"><div class="hr"></div><h2>Staff portal</h2>
   <div id="staffGate" class="card" style="max-width:520px;margin-top:20px">
     <h3>Staff only</h3>
     <p id="gateMsg">Checking your login...</p>
   </div>
   <div id="staffDash" style="display:none">
-    <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:20px"><span class="lab" id="whoami"></span><button class="btn" id="logoutBtn">Log out</button></div>
-    <h3 style="font-size:30px;margin-bottom:12px">Guides</h3>
-    <div class="grid" id="guides" style="margin-bottom:34px"></div>
-    <div class="two">
-      <div><h3 style="font-size:30px;margin-bottom:12px">Applications</h3><div class="ap" id="apps"></div></div>
-      <div>
-        <div id="detail"></div>
-        <h3 style="font-size:30px;margin-bottom:12px">Publish announcement</h3>
-        <div class="card"><div class="q"><input id="annT" maxlength="200" placeholder="Title"></div><div class="q"><textarea id="annB" maxlength="3000" placeholder="Message"></textarea></div>
-        <button class="btn red" id="annGo">Publish to Discord</button><div class="stat" id="annS"></div></div>
+    <div class="prof"><div class="av" id="pAv"></div>
+      <div class="pi"><div class="pn" id="pName"></div><div class="lab" id="pSub"></div><div class="chips2" id="pRoles"></div></div>
+      <button class="btn" id="logoutBtn">Log out</button></div>
+    <div class="tiles">
+      <div class="tile" id="tlStrike"><div class="lab">Strikes</div><div class="tv" id="tStrike">0/3</div><div class="dots" id="dStrike"></div></div>
+      <div class="tile" id="tlWarn"><div class="lab">Warnings</div><div class="tv" id="tWarn">0/3</div><div class="dots" id="dWarn"></div></div>
+      <div class="tile"><div class="lab">Weekly activity</div><div class="tv" id="tQuota">—</div><div class="meter"><i id="mQuota"></i></div><div class="lab" id="qNote"></div></div>
+      <div class="tile" id="tlStand"><div class="lab">Standing</div><div class="tv" id="tStand">Good</div><div class="lab" id="sNote"></div></div>
+    </div>
+    <h3 class="sh">Guides</h3>
+    <div class="grid" id="guides" style="margin-bottom:36px"></div>
+    <div id="adminArea" style="display:none">
+      <div class="two">
+        <div><h3 class="sh">Applications</h3><div class="ap" id="apps"></div></div>
+        <div>
+          <div id="detail"></div>
+          <h3 class="sh">Publish announcement</h3>
+          <div class="card"><div class="q"><input id="annT" maxlength="200" placeholder="Title"></div><div class="q"><textarea id="annB" maxlength="3000" placeholder="Message"></textarea></div>
+          <button class="btn red" id="annGo">Publish to Discord</button><div class="stat" id="annS"></div></div>
+        </div>
       </div>
     </div>
   </div></div>
 </div>
 </main>
+<button class="btn red" id="editFab" type="button">Edit site</button>
+<div id="editBar"><span class="lab" id="editS">Tap any text to edit it.</span><button class="btn red" id="editSave" type="button">Save changes</button><button class="btn" id="editCancel" type="button">Cancel</button></div>
 <footer><div class="w">© Los Angles Roleplay. Not affiliated with Roblox Corporation. <a href="#staff" style="color:var(--r);font-weight:600">Staff portal</a></div></footer>
 
 <script>
@@ -219,11 +251,20 @@ function route(){var h=(location.hash||"#home").slice(1);if(!$("p-"+h))h="home";
  document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.dataset.p===h)});window.scrollTo(0,0)}
 window.addEventListener("hashchange",route);
 /* content */
-DEPTS.forEach(function(d,i){
- var l=mk("a","btn","Apply");l.href="#applications";
- var c=card(d[0],d[1]),cd=(d[0].match(/\(([^)]+)\)/)||[0,""])[1];c.dataset.c=cd;c.appendChild(mk("div","lab","Leadership: "+d[2]));
- var m=mk("div");m.style.marginTop="14px";if(d[3])m.appendChild(l);else m.appendChild(mk("span","lab","Applications closed"));c.appendChild(m);
- $("deptList").appendChild(c);var f=card(d[0],d[1]);f.dataset.c=cd;$("featDept").appendChild(f);});
+var CONTENT={},CHANGES={},editing=false;
+function dv(i,f){var k="dept."+i+"."+f;if(CONTENT[k]!=null)return CONTENT[k];return f==="name"?DEPTS[i][0]:f==="desc"?DEPTS[i][1]:f==="lead"?"Leadership: "+DEPTS[i][2]:""}
+function deptCard(i,full){var cd=(DEPTS[i][0].match(/\(([^)]+)\)/)||[0,""])[1],c=mk("div","card");c.dataset.c=cd;
+ var h=mk("h3",0,dv(i,"name")),p=mk("p",0,dv(i,"desc"));c.appendChild(h);c.appendChild(p);
+ if(!full)return c;
+ h.dataset.k="dept."+i+".name";p.dataset.k="dept."+i+".desc";
+ var l=mk("div","lab",dv(i,"lead"));l.dataset.k="dept."+i+".lead";c.appendChild(l);
+ var m=mk("div");m.style.marginTop="14px";var link=dv(i,"link");
+ if(/^https:\/\//.test(link)){var a=mk("a","btn","Visit");a.href=link;a.target="_blank";a.rel="noopener noreferrer";m.appendChild(a)}else m.appendChild(mk("span","lab","Discord link coming soon"));
+ var ed=mk("button","btn editonly","Edit Discord link");ed.type="button";
+ ed.onclick=function(){var v=prompt("Discord invite link",link||"https://discord.gg/");if(v!==null&&v.trim()){CHANGES["dept."+i+".link"]=v.trim();ed.textContent="Link changed (save to apply)"}};
+ m.appendChild(ed);c.appendChild(m);return c}
+function renderDepts(){["deptList","featDept"].forEach(function(id){var g=$(id);g.textContent="";DEPTS.forEach(function(d,i){g.appendChild(deptCard(i,id==="deptList"))})})}
+renderDepts();
 /* ---------- backend ---------- */
 var sb=null,akey="",token=null,me=null,step=0,ans={};
 function api(p,o){o=o||{};var hd={"Content-Type":"application/json"};if(token)hd.Authorization="Bearer "+token;
@@ -262,13 +303,30 @@ function nav2(f,nx){var msg=mk("div","err");f.appendChild(msg);var r=mk("div","r
 
 /* staff dashboard */
 function staffErr(e){var s=$("annS");if(s)s.textContent=e.message}
+function dots(id,n){var d=$(id);d.textContent="";for(var i=0;i<3;i++){var e=mk("i");if(i<n)e.className="on";d.appendChild(e)}}
+function renderProfile(){$("pName").textContent=me.username;var av=$("pAv");av.textContent="";
+ if(me.avatar&&/^https:\/\//.test(me.avatar)){var im=mk("img");im.src=me.avatar;im.alt="";av.appendChild(im)}else av.textContent=(me.username||"?").charAt(0).toUpperCase();
+ $("pSub").textContent=me.roles.length+" roles in the Discord server";
+ var rr=$("pRoles");rr.textContent="";me.roles.slice(0,14).forEach(function(r){var c=mk("span","rc"),d=mk("i");d.style.background=r.color||"#8f8f98";c.appendChild(d);c.appendChild(document.createTextNode(r.name));rr.appendChild(c)});
+ $("tStrike").textContent=me.strikes+"/3";dots("dStrike",me.strikes);$("tlStrike").className="tile"+(me.strikes>=2?" bad":"");
+ $("tWarn").textContent=me.warnings+"/3";dots("dWarn",me.warnings);$("tlWarn").className="tile"+(me.warnings>=2?" bad":"");
+ var bl=me.blacklists.length,ts=$("tStand"),sn=$("sNote");
+ ts.textContent=bl?"Restricted":(me.strikes||me.warnings)?"Watch":"Good";
+ sn.textContent=bl?"Blacklisted: "+me.blacklists.join(", "):(me.strikes||me.warnings)?"Active infractions on record":"No infractions";
+ $("tlStand").className="tile"+(bl?" bad":"")}
+function loadQuota(){api("/admin/quota").then(function(q){var t=$("tQuota"),m=$("mQuota"),n=$("qNote");
+ if(!q.available){t.textContent="—";n.textContent=q.reason||"Not available";m.style.width="0";return}
+ t.textContent=q.hours.toFixed(1)+"h";n.textContent=q.target?"of "+q.target+"h this week":"this week";m.style.width=q.target?Math.min(100,q.hours/q.target*100)+"%":"0"}).catch(function(){})}
 function renderStaff(){var gate=$("staffGate"),dash=$("staffDash");
- if(me&&me.isStaff){gate.style.display="none";dash.style.display="block";$("whoami").textContent="Logged in as "+me.username;loadApps();loadGuides();return}
+ if(me&&me.isStaff){gate.style.display="none";dash.style.display="block";renderProfile();loadGuides();loadQuota();
+  $("adminArea").style.display=me.canReview?"block":"none";if(me.canReview)loadApps();return}
  dash.style.display="none";gate.style.display="block";gate.querySelectorAll("button").forEach(function(b){b.remove()});
- $("gateMsg").textContent=!me?"Log in with Discord. Access is checked on our server against your roles in the Discord server.":(me.botOnline===false?"We could not verify your roles because the bot is offline. Try again later.":"Your Discord account does not have staff access.");
+ $("gateMsg").textContent=!me?"Log in with Discord. Access is checked on our server against your roles in the Discord server.":
+  me.botOnline===false?"We could not verify your roles because the bot is offline. Try again later.":
+  me.blacklists.indexOf("Staff")>-1?"Your account is blacklisted from staff access.":"Your Discord account does not have staff access.";
  if(!me)gate.appendChild(loginBtn());else{var b=mk("button","btn","Log out");b.onclick=logout;gate.appendChild(b)}}
 function loadGuides(){api("/admin/guides").then(function(d){var g=$("guides");g.textContent="";
- if(!d.guides.length){g.appendChild(card("No guides yet","Guide links have not been added to the server settings."));return}
+ if(!d.guides.length){g.appendChild(card("No guides available","Guide links have not been added, or your roles do not include one."));return}
  d.guides.forEach(function(x){var c=card(x.name,"Confidential. Staff only.",null,"Guide");if(/^https:\/\//.test(x.url)){var a=mk("a","btn","Open guide");a.href=x.url;a.target="_blank";a.rel="noopener noreferrer";c.appendChild(a)}g.appendChild(c)})}).catch(staffErr)}
 function loadApps(){api("/admin/applications").then(function(d){var a=$("apps");a.textContent="";
  if(!d.applications.length){a.appendChild(card("No applications yet","New applications will appear here."));return}
@@ -307,13 +365,33 @@ function loadNews(){api("/news").then(function(d){["newsList","homeNews"].forEac
  items.forEach(function(n){g.appendChild(card(n.title||"Announcement",n.content||"",null,new Date(n.createdAt).toLocaleDateString()))})})}).catch(function(){})}
 
 /* login state */
-function render(){renderForm();renderStaff()}
+function render(){renderForm();renderStaff();$("editFab").style.display=(me&&me.canEditSite&&!editing)?"block":"none"}
 function loadMe(){if(!token){me=null;render();return}api("/me").then(function(m){me=m;render()}).catch(function(){me=null;render()})}
 fetch("/api/config").then(function(r){return r.json()}).then(function(c){
  akey=c.supabaseAnonKey||"";sb=supabase.createClient(c.supabaseUrl,c.supabaseAnonKey,{auth:{flowType:"pkce"}});
  sb.auth.onAuthStateChange(function(ev,s){token=s?s.access_token:null;loadMe()})}).catch(render);
 try{var after=sessionStorage.getItem("after");if(after){sessionStorage.removeItem("after");location.hash=after}}catch(e){}
-render();loadStats();loadNews();route();
+
+/* ---------- website editor (Directive Board and above) ---------- */
+function norm(s){return s.replace(/\s+/g," ").trim()}
+function startEdit(){editing=true;CHANGES={};document.body.classList.add("editing");
+ document.querySelectorAll("[data-k]").forEach(function(el){el._b=norm(el.textContent);el.contentEditable="true";el.spellcheck=false});
+ $("editBar").style.display="flex";$("editFab").style.display="none";$("editS").textContent="Tap any text to edit it."}
+function stopEdit(){editing=false;document.body.classList.remove("editing");
+ document.querySelectorAll("[data-k]").forEach(function(el){el.removeAttribute("contenteditable")});$("editBar").style.display="none";render()}
+function cancelEdit(){document.querySelectorAll("[data-k]").forEach(function(el){if(el._b!=null)el.textContent=el._b});stopEdit();renderDepts()}
+function saveEdit(){var ch=Object.assign({},CHANGES);
+ document.querySelectorAll("[data-k]").forEach(function(el){var v=norm(el.textContent);if(v&&v!==el._b)ch[el.dataset.k]=v});
+ if(!Object.keys(ch).length){$("editS").textContent="No changes yet.";return}
+ $("editS").textContent="Saving...";
+ api("/admin/content",{method:"POST",body:{changes:ch}}).then(function(){Object.keys(ch).forEach(function(k){CONTENT[k]=ch[k]});stopEdit();renderDepts()}).catch(function(e){$("editS").textContent=e.message})}
+$("editFab").onclick=startEdit;$("editSave").onclick=saveEdit;$("editCancel").onclick=cancelEdit;
+document.addEventListener("click",function(e){if(editing&&e.target.closest&&e.target.closest("[data-k]"))e.preventDefault()},true);
+document.addEventListener("keydown",function(e){if(editing&&e.key==="Enter"&&e.target.closest&&e.target.closest("[data-k]"))e.preventDefault()});
+document.addEventListener("paste",function(e){if(editing&&e.target.closest&&e.target.closest("[data-k]")){e.preventDefault();document.execCommand("insertText",false,(e.clipboardData||window.clipboardData).getData("text/plain"))}});
+function loadContent(){fetch("/api/content").then(function(r){return r.json()}).then(function(d){CONTENT=d.content||{};
+ document.querySelectorAll("[data-k]").forEach(function(el){var k=el.dataset.k;if(CONTENT[k]!=null)el.textContent=CONTENT[k]});renderDepts()}).catch(function(){})}
+render();loadStats();loadNews();loadContent();route();
 </script>
 </body>
 </html>
