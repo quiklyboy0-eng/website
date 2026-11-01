@@ -225,12 +225,12 @@ DEPTS.forEach(function(d,i){
  var m=mk("div");m.style.marginTop="14px";if(d[3])m.appendChild(l);else m.appendChild(mk("span","lab","Applications closed"));c.appendChild(m);
  $("deptList").appendChild(c);var f=card(d[0],d[1]);f.dataset.c=cd;$("featDept").appendChild(f);});
 /* ---------- backend ---------- */
-var sb=null,token=null,me=null,step=0,ans={};
+var sb=null,akey="",token=null,me=null,step=0,ans={};
 function api(p,o){o=o||{};var hd={"Content-Type":"application/json"};if(token)hd.Authorization="Bearer "+token;
  return fetch("/api"+p,{method:o.method||"GET",headers:hd,body:o.body?JSON.stringify(o.body):undefined}).then(function(r){
   return r.json().catch(function(){return{}}).then(function(d){if(!r.ok)throw new Error(d.error||"Request failed");return d})})}
 function login(){if(!sb)return;try{sessionStorage.setItem("after",location.hash)}catch(e){}
- sb.auth.signInWithOAuth({provider:"discord",options:{redirectTo:location.origin+"/",scopes:"identify"}})}
+ sb.auth.signInWithOAuth({provider:"discord",options:{redirectTo:location.origin+"/",scopes:"identify",skipBrowserRedirect:true}}).then(function(r){if(r.error||!r.data||!r.data.url){alert("Login could not start: "+(r.error?r.error.message:"no address"));return}location.href=r.data.url+"&apikey="+encodeURIComponent(akey)})}
 function logout(){if(sb)sb.auth.signOut()}
 function loginBtn(){var b=mk("button","btn red","Log in with Discord");b.onclick=login;return b}
 
@@ -310,7 +310,7 @@ function loadNews(){api("/news").then(function(d){["newsList","homeNews"].forEac
 function render(){renderForm();renderStaff()}
 function loadMe(){if(!token){me=null;render();return}api("/me").then(function(m){me=m;render()}).catch(function(){me=null;render()})}
 fetch("/api/config").then(function(r){return r.json()}).then(function(c){
- sb=supabase.createClient(c.supabaseUrl,c.supabaseAnonKey,{auth:{flowType:"pkce"}});
+ akey=c.supabaseAnonKey||"";sb=supabase.createClient(c.supabaseUrl,c.supabaseAnonKey,{auth:{flowType:"pkce"}});
  sb.auth.onAuthStateChange(function(ev,s){token=s?s.access_token:null;loadMe()})}).catch(render);
 try{var after=sessionStorage.getItem("after");if(after){sessionStorage.removeItem("after");location.hash=after}}catch(e){}
 render();loadStats();loadNews();route();
